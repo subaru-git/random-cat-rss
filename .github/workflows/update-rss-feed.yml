@@ -4,9 +4,19 @@ jobs:
   update-rss-feed:
     runs-on: ubuntu-latest
     steps:
+      - name: Create rss feed
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: yarn
-      - run: yarn start
+      - run: | 
+          yarn
+          yarn start
+      - name: Update rss feed file
+      - run: |
+          git config --local user.email "subaru1208.m@gmail.com"
+          git config --local user.name "subaru-git"
+          git add feeds/cat.rss
+          git commit -m "update rss feed"
+          git push origin main
+      
