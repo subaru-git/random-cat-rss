@@ -1,7 +1,7 @@
 name: update-rss-feed
 on: [push]
 jobs:
-  check-bats-version:
+  update-rss-feed:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
