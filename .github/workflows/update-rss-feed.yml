@@ -18,7 +18,7 @@ jobs:
         run: |
           git config --local user.email "subaru1208.m@gmail.com"
           git config --local user.name "subaru-git"
-          git add feeds/cat.rss
+          git add -f feeds/cat.rss
           git commit -m "update rss feed"
           git push origin main
       
