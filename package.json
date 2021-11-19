@@ -8,5 +8,8 @@
   },
   "repository": "git@github.com:subaru-git/random-cat-rss.git",
   "author": "subaru-git <subaru1208.m@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "rss-generator": "^0.0.3"
+  }
 }
