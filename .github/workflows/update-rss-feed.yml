@@ -20,5 +20,6 @@ jobs:
           git config --local user.name "subaru-git"
           git add -f feeds/cat.rss
           git commit -m "update rss feed"
+          git pull
           git push origin main
       
