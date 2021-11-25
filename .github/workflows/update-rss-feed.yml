@@ -10,16 +10,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: Create rss feed file
+      - name: Create .env
+        run: |
+          touch .env
+          echo "TEAMS_HOOK_URL=${{ secrets.TEAMS_HOOK_URL }}" >> .env
+      - name: Post to teams
         run: | 
           yarn
-          yarn start
-      - name: Update rss feed file
-        run: |
-          git config --local user.email "subaru1208.m@gmail.com"
-          git config --local user.name "subaru-git"
-          git add -f feeds/cat.rss
-          git commit -m "update rss feed"
-          git pull --rebase
-          git push origin main
-      
+          yarn start     

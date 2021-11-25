@@ -1,6 +1,29 @@
-const rss = require('rss-generator');
-const fs = require('fs');
+'use strict';
 
-const feed = new rss({title: 'random cat api', description: 'This rss feed make from random cat api.'});
-feed.item({title: 'meow', description: 'meow', url: 'https://purr.objects-us-east-1.dream.io/i/ODD9FR6.jpg'})
-fs.writeFileSync('feeds/cat.rss', feed.xml({indent: true}));
+const axios = require('axios');
+const config = require('dotenv').config();
+
+(async () => {
+  const response = await axios.get('http://aws.random.cat/meow');
+  await axios.post(process.env.TEAMS_HOOK_URL, {
+    type: 'message',
+    attachments: [
+      {
+        contentType: 'application/vnd.microsoft.card.adaptive',
+        contentUrl: null,
+        content: {
+          $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
+          type: 'AdaptiveCard',
+          version: '1.2',
+          body: [
+            {
+              type: 'Image',
+              altText: 'meow',
+              url: response.data.file,
+            }
+          ]
+        }
+      }
+    ]
+  })
+})();
