@@ -20,6 +20,9 @@ const config = require('dotenv').config();
               type: 'Image',
               altText: 'meow',
               url: response.data.file,
+              msTeams: {
+                allowExpand: true,
+              }
             }
           ]
         }
