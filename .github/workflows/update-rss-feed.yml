@@ -1,5 +1,10 @@
 name: update-rss-feed
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+    schedule:
+      - cron: '0/15 * * * *'
 jobs:
   update-rss-feed:
     runs-on: ubuntu-latest
